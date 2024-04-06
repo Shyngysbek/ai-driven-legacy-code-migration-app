@@ -1,5 +1,11 @@
 "use client";
+
+import { Button } from '@/components/ui/button';
+import { useUser } from '@auth0/nextjs-auth0/client';
 import { Menu, X } from 'lucide-react'
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react'
 
 const navigation = [
@@ -10,7 +16,13 @@ const navigation = [
 ]
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false)
+  const { user, error, isLoading } = useUser();
+  const router = useRouter();
+
+  if (user) {
+    router.push("/application")
+  }
+
   return (
     <div className='bg-white'>
       <header className='absolute inset-x-0 top-0 z-50'>
@@ -18,14 +30,15 @@ export default function Home() {
           className='flex items-center justify-between p-6 lg:px-8'
           aria-label='Global'>
           <div className='flex lg:flex-1'>
-            <a href='#' className='-m-1.5 p-1.5'>
+            <Link href='/' className='-m-1.5 p-1.5'>
               <span className='sr-only'>Watt</span>
-              <img
-                className='h-8 w-auto'
-                src='/logo.svg'
-                alt='Logo'
+              <Image
+                height={130}
+                width={130}
+                alt="logo"
+                src="/logo.svg"
               />
-            </a>
+            </Link>
           </div>
           <div className='flex lg:hidden'>
             <button
@@ -35,22 +48,25 @@ export default function Home() {
               <Menu className='h-6 w-6' aria-hidden='true' />
             </button>
           </div>
-          <div className='hidden lg:flex lg:gap-x-12'>
+          <div>
             {navigation.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className='text-sm font-semibold leading-6 text-gray-900'>
-                {item.name}
-              </a>
+              <Button variant="link" size="lg">
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className='text-base font-semibold leading-6 text-gray-900'>
+                  {item.name}
+                </Link>
+              </Button>
             ))}
           </div>
           <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
-            <a
-              href='#'
-              className='text-sm font-semibold leading-6 text-gray-900'>
+            <Link
+              href="/api/auth/login"
+              className='text-sm font-semibold leading-6 text-gray-900'
+            >
               Log in <span aria-hidden='true'>&rarr;</span>
-            </a>
+            </Link>
           </div>
         </nav>
       </header>
@@ -77,11 +93,11 @@ export default function Home() {
                 This website uses AI tools to renew your ancient code and make it more effective and suitable for the future.
               </p>
               <div className='mt-10 flex items-center justify-center gap-x-6'>
-                <a
-                  href='#'
+                <Link
+                  href='/api/auth/login'
                   className='rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
                   Get started
-                </a>
+                </Link>
                 <a
                   href='#'
                   className='text-sm font-semibold leading-6 text-gray-900'>
