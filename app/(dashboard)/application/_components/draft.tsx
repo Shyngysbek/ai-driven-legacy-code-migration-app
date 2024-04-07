@@ -23,49 +23,8 @@ import { cn } from "@/lib/utils";
 // import { Empty } from "@/components/ui/empty";
 import { useProModal } from "@/hooks/use-pro-modal";
 
-import { formSchema } from "./constants";
+import { formSchema } from "../constants";
 import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea"
-import { Combobox } from "@/components/combobox";
-
-const languages = [
-  {
-    value: "JavaScript",
-    label: "JavaScript",
-  },
-  {
-    value: "Python",
-    label: "Python",
-  },
-  {
-    value: "Java",
-    label: "Java",
-  },
-  {
-    value: "C#",
-    label: "C#",
-  },
-  {
-    value: "C++",
-    label: "C++",
-  },
-  {
-    value: "C",
-    label: "C",
-  },
-  {
-    value: "TypeScript",
-    label: "TypeScript",
-  },
-  {
-    value: "Swift",
-    label: "Swift",
-  },
-  {
-    value: "Kotlin",
-    label: "Kotlin",
-  },
-]
 
 const CodePage = () => {
   const { user, error, isLoading } = useUser();
@@ -109,7 +68,7 @@ const CodePage = () => {
   }
 
   return (
-    <div className="">
+    <div>
       <Heading
         title="UpToDate Code Generation"
         description="Renew your ancient code and make it more efficient and suitable"
@@ -117,7 +76,7 @@ const CodePage = () => {
         iconColor="text-green-700"
         bgColor="bg-green-700/10"
       />
-      <div className="px-4 lg:px-8 grid grid-cols-2 gap-x-4">
+      <div className="px-4 lg:px-8">
         <div>
           <Form {...form}>
             <form
@@ -130,7 +89,8 @@ const CodePage = () => {
                 px-3 
                 md:px-6 
                 focus-within:shadow-sm
-                space-y-4
+                grid
+                grid-cols-12
                 gap-2
               "
             >
@@ -139,8 +99,8 @@ const CodePage = () => {
                 render={({ field }) => (
                   <FormItem className="col-span-12 lg:col-span-10">
                     <FormControl className="m-0 p-0">
-                      <Textarea
-                        className="min-h-[400px] max-h-auto border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent w-full h-full"
+                      <Input
+                        className="border-0 outline-none focus-visible:ring-0 focus-visible:ring-transparent"
                         disabled={isFormLoading}
                         placeholder="Simple toggle button using react hooks."
                         {...field}
@@ -155,16 +115,16 @@ const CodePage = () => {
             </form>
           </Form>
         </div>
-        <div className="space-y-4">
+        <div className="space-y-4 mt-4">
           {isFormLoading && (
             <div className="p-8 rounded-lg w-full flex items-center justify-center bg-muted">
               {/* <Loader /> */}
               <div>Loader component!</div>
             </div>
           )}
-          {messages.length === 0 && !isFormLoading && (
+          {messages.length === 0 && ! isFormLoading && (
             // <Empty label="No conversation started." />
-            <div className="w-full bg-slate-300/30 rounded-sm p-4 h-full">No conversation started!</div>
+            <div>No conversation started!</div>
           )}
           <div className="flex flex-col-reverse gap-y-4">
             {messages.map((message) => (
@@ -178,7 +138,7 @@ const CodePage = () => {
                 {/* {message.role === "user" ? <UserAvatar /> : <BotAvatar />} */}
                 <ReactMarkdown components={{
                   pre: ({ node, ...props }) => (
-                    <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg h-2/6 overscroll-auto">
+                    <div className="overflow-auto w-full my-2 bg-black/10 p-2 rounded-lg">
                       <pre {...props} />
                     </div>
                   ),

@@ -8,11 +8,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react'
+import toast from 'react-hot-toast';
 
 export default function Home() {
   const { user, error, isLoading } = useUser();
   const router = useRouter();
-  
+  const throwError = () => toast.error("Something went wrong");
+
   return (
     <div>
       <div className='relative isolate pt-14'>
@@ -40,11 +42,12 @@ export default function Home() {
                   Go to App
                 </Link>
                 )}
-                <a
-                  href='#'
+                <Button
+                  onClick={throwError}
+                  variant="link"
                   className='text-sm font-semibold leading-6 text-gray-900'>
                   Our mission <span aria-hidden='true'>→</span>
-                </a>
+                </Button>
               </div>
             </div>
           </div>
