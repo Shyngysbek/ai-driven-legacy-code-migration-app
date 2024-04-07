@@ -18,7 +18,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <div className=" p-4 border-b-2 h-full flex items-center">
+      <div className=" p-4 border-b-0 h-full flex items-center">
         <Logo />
         <div className='ml-auto flex flex-row items-center gap-8'>
 
