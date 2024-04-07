@@ -22,7 +22,7 @@ const ContactPage = () => {
           </CardHeader>
           <CardContent className="text-sm">
             <p className="mb-16">
-              Sometimes, rewriting and rearchitecturing codes might seem very tedious and difficult to accomplish, but I'm really happy I've stumbled upon this hidden gem. Really amazing work done there
+              Sometimes, rewriting and rearchitecturing codes might seem very tedious and difficult to accomplish, but I am really happy I have stumbled upon this hidden gem. Really amazing work done there
             </p>
             <Separator />
             <p className="mt-max">ansaramantur@gmail.com</p>
@@ -42,7 +42,7 @@ const ContactPage = () => {
           </CardHeader>
           <CardContent className="text-sm">
             <p className="mb-4">
-              I'm a versatile web developer proficient in frontend (NextJs, TailwindCSS, JavaScript) and backend (Node.js, Python) technologies. I specialize in creating responsive interfaces and building robust APIs and databases, delivering scalable web solutions with a collaborative and solution-oriented approach.
+              I am a versatile web developer proficient in frontend (NextJs, TailwindCSS, JavaScript) and backend (Node.js, Python) technologies. I specialize in creating responsive interfaces and building robust APIs and databases, delivering scalable web solutions with a collaborative and solution-oriented approach.
             </p>
             <Separator />
             <p>bbalgabay.shyngysbek@gmail.com</p>
