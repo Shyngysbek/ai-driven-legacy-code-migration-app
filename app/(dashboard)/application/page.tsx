@@ -12,15 +12,11 @@ import { toast } from "react-hot-toast";
 import ReactMarkdown from "react-markdown";
 import { ChatCompletionRequestMessage } from "openai";
 
-// import { BotAvatar } from "@/components/bot-avatar";
 import { Heading } from "@/components/heading";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { cn } from "@/lib/utils";
-// import { Loader } from "@/components/loader";
-// import { UserAvatar } from "@/components/user-avatar";
-// import { Empty } from "@/components/ui/empty";
 import { useProModal } from "@/hooks/use-pro-modal";
 
 import { formSchema } from "./constants";
@@ -33,18 +29,20 @@ const CodePage = () => {
   const proModal = useProModal();
   const [messages, setMessages] = useState<ChatCompletionRequestMessage[]>([]);
 
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error.message}</div>;
-  if (!user) {
-    router.push("/api/auth/login");
-  }
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       prompt: ""
     }
   });
+  
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
+  if (!user) {
+    router.push("/api/auth/login");
+    return null;
+  }
+
 
   const isFormLoading = form.formState.isSubmitting;
 
