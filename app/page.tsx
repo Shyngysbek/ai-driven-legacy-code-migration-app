@@ -12,11 +12,7 @@ import { useState } from 'react'
 export default function Home() {
   const { user, error, isLoading } = useUser();
   const router = useRouter();
-
-  if (user) {
-    router.push("/application")
-  }
-
+  
   return (
     <div>
       <div className='relative isolate pt-14'>
@@ -27,14 +23,23 @@ export default function Home() {
                 Renew your old code
               </h1>
               <p className='mt-6 text-lg leading-8 text-gray-600'>
-                This website uses AI tools to renew your ancient code and make it more effective and suitable for the future.
+                This website uses AI tools to renew your ancient code and make it more efficient and suitable for the future.
               </p>
               <div className='mt-10 flex items-center justify-center gap-x-6'>
+                {!user && (
                 <Link
                   href='/api/auth/login'
                   className='rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
                   Get started
                 </Link>
+                )}
+                {user && (
+                <Link
+                  href='/application'
+                  className='rounded-md bg-emerald-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-emerald-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                  Go to App
+                </Link>
+                )}
                 <a
                   href='#'
                   className='text-sm font-semibold leading-6 text-gray-900'>

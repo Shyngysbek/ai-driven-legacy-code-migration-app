@@ -5,13 +5,7 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { useUser } from "@auth0/nextjs-auth0/client";
 import { useState } from "react";
-
-const navigation = [
-  { name: 'Home', href: '#' },
-  { name: 'About Us', href: '#' },
-  { name: 'Get started', href: '#' },
-  { name: 'Contact', href: '#' },
-]
+import NavigationRoutes from "./navigation-routes";
 
 const Header = () => {
   const { user, error, isLoading } = useUser();
@@ -44,16 +38,7 @@ const Header = () => {
             </button>
           </div>
           <div>
-            {navigation.map((item) => (
-              <Button variant="link" size="lg">
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className='text-base font-semibold leading-6 text-gray-900'>
-                  {item.name}
-                </Link>
-              </Button>
-            ))}
+            <NavigationRoutes />
           </div>
           <div className='hidden lg:flex lg:flex-1 lg:justify-end gap-x-5'>
             {!user && (
