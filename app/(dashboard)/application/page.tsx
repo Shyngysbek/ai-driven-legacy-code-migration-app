@@ -26,46 +26,6 @@ import { useProModal } from "@/hooks/use-pro-modal";
 import { formSchema } from "./constants";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea"
-import { Combobox } from "@/components/combobox";
-
-const languages = [
-  {
-    value: "JavaScript",
-    label: "JavaScript",
-  },
-  {
-    value: "Python",
-    label: "Python",
-  },
-  {
-    value: "Java",
-    label: "Java",
-  },
-  {
-    value: "C#",
-    label: "C#",
-  },
-  {
-    value: "C++",
-    label: "C++",
-  },
-  {
-    value: "C",
-    label: "C",
-  },
-  {
-    value: "TypeScript",
-    label: "TypeScript",
-  },
-  {
-    value: "Swift",
-    label: "Swift",
-  },
-  {
-    value: "Kotlin",
-    label: "Kotlin",
-  },
-]
 
 const CodePage = () => {
   const { user, error, isLoading } = useUser();
